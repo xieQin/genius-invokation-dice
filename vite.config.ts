@@ -1,11 +1,6 @@
-import replace from "@rollup/plugin-replace";
 import legacy from "@vitejs/plugin-legacy";
-import react from "@vitejs/plugin-react";
 import { fileURLToPath } from "url";
-import { defineConfig, loadEnv, PluginOption } from "vite";
-import { VitePWA } from "vite-plugin-pwa";
-
-import { PWAConfig, replaceOptions } from "./src/configs/pwa";
+import { defineConfig, loadEnv } from "vite";
 
 // https://vitejs.dev/config/
 export default ({ mode }: { mode: string }) => {
@@ -15,12 +10,7 @@ export default ({ mode }: { mode: string }) => {
     build: {
       sourcemap: process.env.SOURCE_MAP === "true",
     },
-    plugins: [
-      legacy(),
-      react(),
-      VitePWA(PWAConfig),
-      replace(replaceOptions) as PluginOption,
-    ],
+    plugins: [legacy()],
     resolve: {
       alias: {
         // for TypeScript path alias import like : @/x/y/z
