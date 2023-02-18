@@ -15,6 +15,8 @@ const sizes = {
 const gui = new dat.GUI();
 const debugObject = {
   color: "#FF00CC",
+  radius: 1,
+  detail: 0,
 };
 
 const onResize = () => {
@@ -41,9 +43,20 @@ scene.add(camera);
 
 const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
 const cubeMaterial = new THREE.MeshBasicMaterial({ color: debugObject.color });
+const vertices = [1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 1, 0, 0, -1];
+const indices = [
+  0, 2, 4, 0, 4, 3, 0, 3, 5, 0, 5, 2, 1, 2, 5, 1, 5, 3, 1, 3, 4, 1, 4, 2,
+];
+const octahedronGeometryGeometry = new THREE.OctahedronGeometry(
+  debugObject.radius,
+  debugObject.detail
+);
+// const octahedronGeometryMaterial = new THREE.MeshBasicMaterial({ color: debugObject.color });
 
 const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+// const octahedronGeometry = new THREE.Mesh(octahedronGeometryMaterial);
 scene.add(cube);
+// scene.add(octahedronGeometry);
 
 gui
   .addColor(debugObject, "color")
@@ -51,24 +64,27 @@ gui
   .onChange(() => {
     cubeMaterial.color = new THREE.Color(debugObject.color);
   });
-gui
-  .add(cube.rotation, "x")
-  .min(0)
-  .max(Math.PI * 2)
-  .step(0.01)
-  .name("RotationX");
-gui
-  .add(cube.rotation, "y")
-  .min(0)
-  .max(Math.PI * 2)
-  .step(0.01)
-  .name("RotationY");
-gui
-  .add(cube.rotation, "z")
-  .min(0)
-  .max(Math.PI * 2)
-  .step(0.01)
-  .name("RotationZ");
+// gui
+//   .add(cube.rotation, "x")
+//   .min(0)
+//   .max(Math.PI * 2)
+//   .step(0.01)
+//   .name("RotationX");
+// gui
+//   .add(cube.rotation, "y")
+//   .min(0)
+//   .max(Math.PI * 2)
+//   .step(0.01)
+//   .name("RotationY");
+// gui
+//   .add(cube.rotation, "z")
+//   .min(0)
+//   .max(Math.PI * 2)
+//   .step(0.01)
+//   .name("RotationZ");
+gui.addFolder("THREE.OctahedronGeometry");
+gui.add(debugObject, "radius").min(0).max(20).step(0.01).name("radius");
+gui.add(debugObject, "detail").min(0).max(5).step(0.01).name("detail");
 
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
