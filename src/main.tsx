@@ -64,24 +64,24 @@ gui
   .onChange(() => {
     cubeMaterial.color = new THREE.Color(debugObject.color);
   });
-// gui
-//   .add(cube.rotation, "x")
-//   .min(0)
-//   .max(Math.PI * 2)
-//   .step(0.01)
-//   .name("RotationX");
-// gui
-//   .add(cube.rotation, "y")
-//   .min(0)
-//   .max(Math.PI * 2)
-//   .step(0.01)
-//   .name("RotationY");
-// gui
-//   .add(cube.rotation, "z")
-//   .min(0)
-//   .max(Math.PI * 2)
-//   .step(0.01)
-//   .name("RotationZ");
+gui
+  .add(cube.rotation, "x")
+  .min(0)
+  .max(Math.PI * 2)
+  .step(0.01)
+  .name("RotationX");
+gui
+  .add(cube.rotation, "y")
+  .min(0)
+  .max(Math.PI * 2)
+  .step(0.01)
+  .name("RotationY");
+gui
+  .add(cube.rotation, "z")
+  .min(0)
+  .max(Math.PI * 2)
+  .step(0.01)
+  .name("RotationZ");
 gui.addFolder("THREE.OctahedronGeometry");
 gui.add(debugObject, "radius").min(0).max(20).step(0.01).name("radius");
 gui.add(debugObject, "detail").min(0).max(5).step(0.01).name("detail");
