@@ -51,12 +51,9 @@ const octahedronGeometryGeometry = new THREE.OctahedronGeometry(
   debugObject.radius,
   debugObject.detail
 );
-// const octahedronGeometryMaterial = new THREE.MeshBasicMaterial({ color: debugObject.color });
 
 const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-// const octahedronGeometry = new THREE.Mesh(octahedronGeometryMaterial);
 scene.add(cube);
-// scene.add(octahedronGeometry);
 
 gui
   .addColor(debugObject, "color")
